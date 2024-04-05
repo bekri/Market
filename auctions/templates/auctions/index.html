@@ -1,0 +1,23 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+<h2>All Listings</h2>
+<div class="container">
+    
+    <div class="listings-container">
+        {% for listing in all_listings %}
+            <div class="listing">
+                <h3 class="listing-title">{{ listing.title }}</h3>
+                <a href="{% url 'listing_detail' listing.id %}">
+                    <img class="listing-image" src="{{ listing.image.url }}" alt="{{ listing.title }}">
+                </a>
+                <p class="listing-description">{{ listing.description|truncatechars:100 }}</p>
+                <p class="listing-price">Starting Bid: <span>${{ listing.starting_bid }}</span></p>
+                <p class="listing-category">Category: {{ listing.category.name }}</p>
+                <p class="listing-seller">Seller: {{ listing.seller.username }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

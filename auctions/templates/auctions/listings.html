@@ -1,0 +1,16 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+
+  <h2>Active Listings</h2>
+
+<!-- Active listings -->
+
+<ul>
+    {% for listing in active_listings %}
+        <li>{{ listing.title }} - {{ listing.description }}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
